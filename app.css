@@ -1,0 +1,117 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Tahoma", "Leelawadee UI", sans-serif;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+    margin: 20px 0;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 18px;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: repeat(4, 160px);
+    grid-template-rows: repeat(4, 160px);
+    grid-gap: 10px;
+}
+
+.card {
+    box-shadow: 0 3px 10px rgba(200, 200, 200, 0.9);
+    border-radius: 10px;
+    position: relative;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card > .front, .card > .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    box-sizing: border-box;
+    padding: 8px;
+    text-align: center;
+}
+
+.front {
+    background-color: #283593;
+    color: white;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.back.word    { background-color: #DEF3FD; }
+.back.meaning { background-color: #FCF7DE; }
+
+.back > h2 {
+    margin: 0;
+    font-size: 20px;
+    word-break: break-word;
+}
+
+.card.matched > .back { background-color: #DEFDE0; }
+
+.rotated {
+    transform: rotateY(180deg);
+}
+
+#message {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2e7d32;
+    min-height: 1.5em;
+}
+
+button {
+    font-size: 18px;
+    background-color: #c62828;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+@media (max-width: 720px) {
+    #game {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: 22vw;
+        width: 100%;
+    }
+    .back > h2 { font-size: 15px; }
+    .front { font-size: 40px; }
+}
